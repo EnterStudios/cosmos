@@ -27,6 +27,8 @@ class Example extends React.Component {
       >
         <Checkbox.Option value="one">Option 1</Checkbox.Option>
         <Checkbox.Option value="two">Option 2</Checkbox.Option>
+        <Checkbox.Option value="three">Option 3</Checkbox.Option>
+        <Checkbox.Option value="four">Option 4</Checkbox.Option>
       </Checkbox>
     )
   }
