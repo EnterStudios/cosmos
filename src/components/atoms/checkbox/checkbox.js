@@ -40,7 +40,7 @@ const StyledCheckboxOption = styled.label`
       ${props => (props.readOnly ? colors.radio.borderDisabled : colors.radio.border)};
     box-shadow: inset 0 1px 2px 0
       ${props => (props.readOnly ? colors.radio.shadowDisabled : colors.radio.shadow)};
-    border-radius: 50%;
+    border-radius: 2px;
   }
 
   &:hover input ~ ${CheckMark} {
@@ -63,14 +63,13 @@ const StyledCheckboxOption = styled.label`
   }
 
   ${CheckMark}:after {
-    background-color: ${colors.base.white};
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    box-shadow: 0 1px 2px 0 ${colors.radio.shadow};
-    left: 50%;
+    width: 4px;
+    height: 8px;
+    border: solid ${colors.base.white};
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translate(-50%, -50%);
+    left: 20%;
     top: 50%;
-    transform: translate(-50%, -50%);
   }
 `
 
@@ -93,7 +92,7 @@ const StyledCheckbox = styled.div`
 const CheckboxOption = props => (
   <StyledCheckboxOption readOnly={props.readOnly}>
     <input
-      type="radio"
+      type="checkbox"
       name={props.name}
       value={props.value}
       checked={props.checked}
@@ -121,7 +120,7 @@ const Checkbox = props => (
 Checkbox.propTypes = {
   /** The direction in which the options should be laid out */
   align: PropTypes.oneOf(['horizontal', 'vertical']),
-  /** The name of the radio */
+  /** The name of the checkbox */
   name: PropTypes.string.isRequired,
   /** The value of the currently-selected option */
   selected: PropTypes.string,
