@@ -96,6 +96,7 @@ const CheckboxOption = props => (
       name={props.name}
       value={props.value}
       checked={props.checked}
+      defaultChecked={props.defaultChecked}
       onChange={props.onChange}
       readOnly
     />
@@ -109,7 +110,8 @@ const Checkbox = props => (
     {React.Children.map(props.children, child => {
       return React.cloneElement(child, {
         name: props.name,
-        checked: props.selected === child.props.value,
+        defaultChecked: props.selected === child.props.value,
+        checked: props.checked,
         readOnly: props.readOnly || child.props.readOnly,
         onChange: props.onChange
       })
