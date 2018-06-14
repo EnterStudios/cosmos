@@ -9,10 +9,11 @@ class Example extends React.Component {
   constructor(props) {
     super(props)
     this.state = { selected: 'one' }
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(evt) {
-    this.setState({ selected: evt.target.value })
+  handleChange() {
+    this.setState({ selected: !this.state.selected })
   }
 
   render() {
@@ -20,7 +21,7 @@ class Example extends React.Component {
       <Checkbox
         name="example1"
         selected={this.state.selected}
-        onChange={evt => this.handleChange(evt)}
+        onChange={this.handleChange}
         {props}
       >
         <Checkbox.Option value="one">Option 1</Checkbox.Option>
