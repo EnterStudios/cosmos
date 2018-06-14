@@ -7,13 +7,22 @@
 ```jsx
 class Example extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = { selected: 'two' }
+    super(props);
+    this.state = { selected: ["one", "two"] };
   }
 
   handleChange(evt) {
-    this.setState({ selected: evt.target.value })
-    this.setState({checked: !this.state.checked})
+    let selected = [...this.state.selected];
+    const evtChecked = evt.target.checked;
+    const evtValue = evt.target.value;
+
+    if (evtChecked) {
+      selected.push(evtValue);
+    } else {
+      selected = selected.filter(item => item !== evtValue);
+    }
+
+    this.setState({ selected });
   }
 
   render() {
@@ -29,7 +38,7 @@ class Example extends React.Component {
         <Checkbox.Option value="three">Option 3</Checkbox.Option>
         <Checkbox.Option value="four">Option 4</Checkbox.Option>
       </Checkbox>
-    )
+    );
   }
 }
 ```

@@ -110,7 +110,7 @@ const Checkbox = props => (
     {React.Children.map(props.children, child => {
       return React.cloneElement(child, {
         name: props.name,
-        defaultChecked: props.selected === child.props.value,
+        defaultChecked: props.selected.indexOf(child.props.value) > -1,
         checked: props.checked,
         readOnly: props.readOnly || child.props.readOnly,
         onChange: props.onChange
@@ -125,7 +125,7 @@ Checkbox.propTypes = {
   /** The name of the checkbox */
   name: PropTypes.string.isRequired,
   /** The value of the currently-selected option */
-  selected: PropTypes.string,
+  selected: PropTypes.arrayOf(PropTypes.string),
   /** If true, all options in the group will be disabled */
   readOnly: PropTypes.bool,
   /** Callback function which is called when the user selects an option */
